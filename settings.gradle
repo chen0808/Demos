@@ -1,1 +1,1 @@
-include ':shashDemo', ':layoutdemo', ':chartdemo', ':grdledemo', ':gallerydemo'
+include ':shashDemo', ':layoutdemo', ':chartdemo', ':grdledemo', ':gallerydemo', ':mvpdemo'
