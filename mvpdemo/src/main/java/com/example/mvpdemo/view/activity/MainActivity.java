@@ -1,15 +1,19 @@
-package com.example.myapplication;
+package com.example.mvpdemo.view.activity;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.example.mvpdemo.R;
 
-/*斜线*/
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    protected void initView() {
+
     }
 }

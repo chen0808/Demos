@@ -1,7 +1,8 @@
 package com.example.gallerydemo;
 
-import android.support.v4.view.ViewPager;
 import android.view.View;
+
+import androidx.viewpager.widget.ViewPager;
 
 public class ScaleAlphaPageTransformer implements ViewPager.PageTransformer {
     public static final float MAX_SCALE = 1.0f;

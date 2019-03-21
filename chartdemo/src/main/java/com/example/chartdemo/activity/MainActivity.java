@@ -1,14 +1,15 @@
 package com.example.chartdemo.activity;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
 import com.example.chartdemo.R;
 import com.example.chartdemo.adapter.ChartAdapter;
 
-public class MainActivity extends AppCompatActivity {
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+public class MainActivity extends Activity {
 
     private String[] type = {"LineChart", "BarChart", "HorizontalBarChart", "CombinedChart（综合）", "PieChart", "ScatterChart", "CandleStickChart(K线图)", "BubbleChart", "RadarChart"};
 
