@@ -1,1 +1,1 @@
-include ':shashDemo', ':layoutdemo', ':chartdemo', ':grdledemo', ':gallerydemo', ':mvpdemo'
+include ':locationdemo', ':permissiondemo', ':circleprocessdemo', ':pgisdemo'

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.example.circlelibary.CircleView
+        android:id="@+id/circle_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.example.circlelibary.CircleView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/fly_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="飞行"></Button>
+
+        <!-- <Button android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="复位"></Button>
+
+         <Button android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="图层"></Button>
+
+         <Button android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="模型"></Button>-->
+    </LinearLayout>
+
+</RelativeLayout>
