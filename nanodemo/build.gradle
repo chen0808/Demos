@@ -25,6 +25,16 @@ android {
 
 }
 
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.netease.hearttouch:ht-candywebcacheplugin:0.1.0'
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -34,4 +44,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'org.nanohttpd:nanohttpd:2.3.1'
+    implementation 'com.netease.hearttouch:ht-candywebcache:0.2.0'
 }

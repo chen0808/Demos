@@ -12,7 +12,7 @@ import fi.iki.elonen.NanoHTTPD;
 
 public class MyWebService extends NanoHTTPD {
 
-    private static final String FILE_NAME = "baidu.html";
+    private static final String FILE_NAME = "configM.json";
     private final Context _mainContext;
 
     public MyWebService(Context context, int port) throws IOException {
@@ -24,10 +24,11 @@ public class MyWebService extends NanoHTTPD {
     @Override
     public Response serve(IHTTPSession session) {
         String uri = session.getUri();
-        Log.d("MyWebService", uri);
+        Log.d("MyWebService", "uri:" + uri + "--------method:" + session.getMethod());
         String filename = uri.substring(1);
-        if (uri.equals("/"))
+        if (uri.equals("/")) {
             filename = FILE_NAME;
+        }
 
         String mimetype = "text/html";
         boolean is_ascii = true;
@@ -35,13 +36,15 @@ public class MyWebService extends NanoHTTPD {
             mimetype = "text/html";
             is_ascii = true;
         } else if (filename.contains(".js")) {
-            mimetype = "text/jacascript";
-            is_ascii = true;
+            if (filename.contains(".json")) {
+                mimetype = "text/json";
+                is_ascii = true;
+            } else {
+                mimetype = "text/jacascript";
+                is_ascii = true;
+            }
         } else if (filename.contains(".css")) {
             mimetype = "text/css";
-            is_ascii = true;
-        } else if (filename.contains(".json")) {
-            mimetype = "application/json";
             is_ascii = true;
         } else if (filename.contains(".gif")) {
             mimetype = "text/gif";
@@ -74,6 +77,7 @@ public class MyWebService extends NanoHTTPD {
 
             } catch (IOException e) {
                 e.printStackTrace();
+                Log.e("MyWebService", e.getMessage());
             }
             return newFixedLengthResponse(Response.Status.OK, mimetype, response);
         } else {
