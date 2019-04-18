@@ -1,1 +1,1 @@
-include ':locationdemo', ':permissiondemo', ':circleprocessdemo', ':pgisdemo', ':speechdemo',':app', ':nanodemo'
+include

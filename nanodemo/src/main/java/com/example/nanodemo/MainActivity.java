@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        web.loadUrl("http://localhost:8080/index_mobile.html");
+        web.loadUrl("http://localhost:8080/frame_mobile.html");
     }
 
     @Override
