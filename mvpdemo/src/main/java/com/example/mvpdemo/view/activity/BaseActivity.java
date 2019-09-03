@@ -1,17 +1,19 @@
 package com.example.mvpdemo.view.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 
-import com.example.mvpdemo.R;
+import androidx.fragment.app.FragmentActivity;
 
-public abstract class BaseActivity extends Activity {
+import butterknife.ButterKnife;
+
+public abstract class BaseActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         int layoutId = initLayout();
         setContentView(layoutId);
+        ButterKnife.bind(this);
         initView();
         inidData();
     }

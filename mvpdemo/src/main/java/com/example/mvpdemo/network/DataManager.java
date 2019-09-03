@@ -1,9 +1,11 @@
 package com.example.mvpdemo.network;
 
 import android.content.Context;
-import android.database.Observable;
 
-import com.example.mvpdemo.model.LoginBean;
+import com.example.mvpdemo.model.ArticleBean;
+import com.example.mvpdemo.model.BaseBean;
+import com.example.mvpdemo.model.DatasBean;
+import com.example.mvpdemo.model.UserBean;
 
 import retrofit.Call;
 
@@ -18,7 +20,11 @@ public class DataManager {
         mRetrofitService = RetrofitHelper.getInstance(context).getServer();
     }
 
-    public Call<LoginBean> login(String username, String password) {
-        return mRetrofitService.login("365EBFC20C6C42C6AA5F4F8BE89B6E12");
+    public Call<BaseBean<UserBean>> login(String username, String password) {
+        return mRetrofitService.login(username, password);
+    }
+
+    public Call<BaseBean<ArticleBean<DatasBean>>> mainList(int page) {
+        return mRetrofitService.mainList(page);
     }
 }

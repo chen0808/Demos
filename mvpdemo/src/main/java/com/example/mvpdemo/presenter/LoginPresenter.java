@@ -2,7 +2,8 @@ package com.example.mvpdemo.presenter;
 
 import android.content.Context;
 
-import com.example.mvpdemo.model.LoginBean;
+import com.example.mvpdemo.model.BaseBean;
+import com.example.mvpdemo.model.UserBean;
 import com.example.mvpdemo.network.DataManager;
 import com.example.mvpdemo.view.view.IBaseView;
 import com.example.mvpdemo.view.view.ILoginView;
@@ -33,9 +34,9 @@ public class LoginPresenter implements IBasePresenter {
     }
 
     public void login(String username, String password) {
-        manager.login(username, password).enqueue(new Callback<LoginBean>() {
+        manager.login(username, password).enqueue(new Callback<BaseBean<UserBean>>() {
             @Override
-            public void onResponse(Response<LoginBean> response, Retrofit retrofit) {
+            public void onResponse(Response<BaseBean<UserBean>> response, Retrofit retrofit) {
                 mLoginView.onSuccess(response.body());
             }
 

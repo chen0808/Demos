@@ -10,7 +10,7 @@ public class ApiService {
     /**
      * 测试服务器地址
      */
-    public static final String DEBUG_URL = "http://172.16.14.67:8080/";
+    public static final String DEBUG_URL = "https://www.wanandroid.com/";
 
     /**
      * 正式服务器地址

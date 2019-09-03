@@ -4,15 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/login_bg"
     tools:context=".view.activity.LoginActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/selector_login_bg"
+        android:text="登录"
+        android:textColor="@color/white" />
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="60dp"
+        android:background="@drawable/shape_user_and_psw_bg"
+        android:divider="@color/blue"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:showDividers="middle">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/white"
+            app:counterEnabled="true"
+            app:counterMaxLength="16"
+            app:counterTextColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:drawableStart="@mipmap/username"
+                android:drawablePadding="4dp"
+                android:ems="10"
+                android:hint="账号"
+                android:inputType="textPersonName"
+                android:textColor="@color/white" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@color/white"
+            app:counterEnabled="true"
+            app:counterMaxLength="16"
+            app:counterTextColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:drawableStart="@mipmap/password"
+                android:drawablePadding="4dp"
+                android:ems="10"
+                android:hint="密码"
+                android:inputType="textPassword"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 </RelativeLayout>
