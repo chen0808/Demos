@@ -1,48 +1,38 @@
 package com.example.mvpdemo.presenter;
 
-import android.content.Context;
-
-import com.example.mvpdemo.model.BaseBean;
-import com.example.mvpdemo.model.UserBean;
-import com.example.mvpdemo.network.DataManager;
-import com.example.mvpdemo.view.view.IBaseView;
-import com.example.mvpdemo.view.view.ILoginView;
+import com.example.mvpdemo.bean.BaseBean;
+import com.example.mvpdemo.bean.UserBean;
+import com.example.mvpdemo.contract.LoginContract;
+import com.example.mvpdemo.model.LoginModel;
 
 import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class LoginPresenter implements IBasePresenter {
-    private Context mContext;
-    private DataManager manager;
-    private ILoginView mLoginView;
+public class LoginPresenter extends BasePresenter<LoginContract.View> implements LoginContract.Presenter {
+    private final LoginModel mModel;
 
-    public LoginPresenter(Context context) {
-        mContext = context;
-        manager = new DataManager(mContext);
-    }
-
-
-    @Override
-    public void onAttachView(IBaseView view) {
-        mLoginView = (ILoginView) view;
+    public LoginPresenter() {
+        mModel = new LoginModel();
     }
 
     @Override
-    public void onCreate() {
-
-    }
-
     public void login(String username, String password) {
-        manager.login(username, password).enqueue(new Callback<BaseBean<UserBean>>() {
+        if (!isViewAttached()) {
+            return;
+        }
+        mView.showLoading();
+        mModel.login(username, password).enqueue(new Callback<BaseBean<UserBean>>() {
             @Override
             public void onResponse(Response<BaseBean<UserBean>> response, Retrofit retrofit) {
-                mLoginView.onSuccess(response.body());
+                mView.hideLoading();
+                mView.onSuccess(response.body());
             }
 
             @Override
             public void onFailure(Throwable t) {
-                mLoginView.onError(t.getMessage());
+                mView.hideLoading();
+                mView.onError(t.getMessage());
             }
         });
     }

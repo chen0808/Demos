@@ -2,7 +2,6 @@ package com.example.mvpdemo.utils;
 
 import android.content.Context;
 import android.graphics.PixelFormat;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.wang.avi.AVLoadingIndicatorView;
@@ -19,16 +18,16 @@ public class LoadingUtils {
 
     }
 
-    ;
-
     public static void show(Context context, Indicator indicator) {
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        avi = new AVLoadingIndicatorView(context);
-        ViewGroup.LayoutParams params = new WindowManager.LayoutParams();
-        params.height = 160;
-        params.width = 160;
-        ((WindowManager.LayoutParams) params).format = PixelFormat.TRANSLUCENT;
-        windowManager.addView(avi, params);
+        if (avi == null) {
+            avi = new AVLoadingIndicatorView(context);
+            WindowManager.LayoutParams params = new WindowManager.LayoutParams();
+            params.height = 160;
+            params.width = 160;
+            params.format = PixelFormat.TRANSLUCENT;
+            windowManager.addView(avi, params);
+        }
         avi.setIndicator(indicator);
         avi.show();
     }

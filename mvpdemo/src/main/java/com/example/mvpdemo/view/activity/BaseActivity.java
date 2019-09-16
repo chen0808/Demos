@@ -18,9 +18,17 @@ public abstract class BaseActivity extends FragmentActivity {
         inidData();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        destory();
+    }
+
     protected abstract int initLayout();
 
     protected abstract void initView();
 
     protected abstract void inidData();
+
+    protected abstract void destory();
 }

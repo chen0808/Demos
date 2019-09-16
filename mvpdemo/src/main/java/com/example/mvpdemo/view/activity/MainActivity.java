@@ -68,6 +68,11 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void destory() {
+
+    }
+
     private void initDrawlayout() {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolBar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {

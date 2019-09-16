@@ -1,16 +1,16 @@
 package com.example.mvpdemo.network;
 
-import com.example.mvpdemo.model.ArticleBean;
-import com.example.mvpdemo.model.BannerBean;
-import com.example.mvpdemo.model.BaseBean;
-import com.example.mvpdemo.model.CoinBean;
-import com.example.mvpdemo.model.DatasBean;
-import com.example.mvpdemo.model.FriendBean;
-import com.example.mvpdemo.model.HotKeyBean;
-import com.example.mvpdemo.model.NavigationBean;
-import com.example.mvpdemo.model.ProjectTreeBean;
-import com.example.mvpdemo.model.TreeBean;
-import com.example.mvpdemo.model.UserBean;
+import com.example.mvpdemo.bean.ArticleBean;
+import com.example.mvpdemo.bean.BannerBean;
+import com.example.mvpdemo.bean.BaseBean;
+import com.example.mvpdemo.bean.CoinBean;
+import com.example.mvpdemo.bean.DatasBean;
+import com.example.mvpdemo.bean.FriendBean;
+import com.example.mvpdemo.bean.HotKeyBean;
+import com.example.mvpdemo.bean.NavigationBean;
+import com.example.mvpdemo.bean.ProjectTreeBean;
+import com.example.mvpdemo.bean.TreeBean;
+import com.example.mvpdemo.bean.UserBean;
 
 import java.util.List;
 
@@ -57,7 +57,7 @@ public interface RetrofitService {
 
     //导航数据
     @GET("navi/json")
-    Call<BaseBean<NavigationBean>> navitation();
+    Call<BaseBean<List<NavigationBean<DatasBean>>>> navitation();
 
     //项目分类
     @GET("project/tree/json")
@@ -74,16 +74,14 @@ public interface RetrofitService {
     Call<BaseBean<UserBean>> login(
 //            @Field("username")String username,
             @Query("username") String username,
-            @Query("password") String password
-    );
+            @Query("password") String password);
 
     //注册
     @POST("user/register")
     Call<BaseBean<UserBean>> register(
             @Query("username") String username,
             @Query("password") String password,
-            @Query("repassword") String repassword
-    );
+            @Query("repassword") String repassword);
 
     //退出登录
     @GET("user/logout/json")
@@ -112,7 +110,7 @@ public interface RetrofitService {
             @Path("id") int id);
 
     //我的收藏页面取消收藏,originId列表页下发,无则为-1
-    @POST("lg/uncollect/2805/json")
+    @POST("lg/uncollect/{id}/json")
     Call<BaseBean> uncollect2(
             @Path("id") int id,
             @Query("originId") int originId);

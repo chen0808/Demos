@@ -9,8 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import butterknife.ButterKnife;
-
 public abstract class BaseFragment extends Fragment {
 
     @Nullable
@@ -18,10 +16,16 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         int layoutId = initLayout();
         View view = inflater.inflate(layoutId, container, false);
-        ButterKnife.bind(getActivity());
+//        ButterKnife.bind(getActivity());
         initView(view);
         inidData();
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        destory();
     }
 
     protected abstract int initLayout();
@@ -29,4 +33,6 @@ public abstract class BaseFragment extends Fragment {
     protected abstract void initView(View view);
 
     protected abstract void inidData();
+
+    protected abstract void destory();
 }

@@ -23,4 +23,9 @@ public class ProjectFragment extends BaseFragment {
     protected void inidData() {
 
     }
+
+    @Override
+    protected void destory() {
+
+    }
 }

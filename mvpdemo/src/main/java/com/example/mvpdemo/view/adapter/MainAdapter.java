@@ -6,7 +6,7 @@ import androidx.annotation.Nullable;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.mvpdemo.R;
-import com.example.mvpdemo.model.DatasBean;
+import com.example.mvpdemo.bean.DatasBean;
 
 import java.util.List;
 

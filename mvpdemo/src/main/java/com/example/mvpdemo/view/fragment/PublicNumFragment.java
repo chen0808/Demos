@@ -23,4 +23,9 @@ public class PublicNumFragment extends BaseFragment {
     protected void inidData() {
 
     }
+
+    @Override
+    protected void destory() {
+
+    }
 }

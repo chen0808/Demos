@@ -1,7 +1,5 @@
 package com.example.mvpdemo.network;
 
-import android.content.Context;
-
 import com.google.gson.GsonBuilder;
 import com.squareup.okhttp.OkHttpClient;
 
@@ -14,21 +12,19 @@ import retrofit.RxJavaCallAdapterFactory;
  */
 public class RetrofitHelper {
     private static RetrofitHelper instance;
-    private final Context mContext;
-    OkHttpClient client = new OkHttpClient();
+    private OkHttpClient client = new OkHttpClient();
     private Retrofit mRetrofit;
     private GsonConverterFactory factory=GsonConverterFactory.create(new GsonBuilder().create());
 
-    public static synchronized RetrofitHelper getInstance(Context context) {
-        if (instance == null) {
-            instance = new RetrofitHelper(context);
-        }
-        return instance;
+    private RetrofitHelper() {
+        init();
     }
 
-    private RetrofitHelper(Context context){
-        mContext =context;
-        init();
+    public static synchronized RetrofitHelper getInstance() {
+        if (instance == null) {
+            instance = new RetrofitHelper();
+        }
+        return instance;
     }
 
     private void init() {
