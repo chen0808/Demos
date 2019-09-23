@@ -2,6 +2,8 @@ package com.example.mvpdemo.view.fragment;
 
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mvpdemo.R;
@@ -11,6 +13,7 @@ import com.example.mvpdemo.contract.NavigationContract;
 import com.example.mvpdemo.presenter.NavigationPresenter;
 import com.example.mvpdemo.utils.LoadingUtils;
 import com.example.mvpdemo.utils.ToastUtils;
+import com.example.mvpdemo.view.adapter.NavigationAdapter;
 import com.wang.avi.indicators.PacmanIndicator;
 
 import java.util.List;
@@ -30,6 +33,7 @@ public class NavigationFragment extends BaseFragment implements NavigationContra
     private VerticalTabLayout tabLayout;
     private RecyclerView rvNavigation;
     private NavigationPresenter presenter;
+    private LinearLayoutManager manager;
 
     @Override
     protected int initLayout() {
@@ -100,6 +104,32 @@ public class NavigationFragment extends BaseFragment implements NavigationContra
             @Override
             public int getBackground(int position) {
                 return 0;
+            }
+        });
+
+        manager = new LinearLayoutManager(getActivity());
+        rvNavigation.setLayoutManager(manager);
+        rvNavigation.setAdapter(new NavigationAdapter(R.layout.item_navigation, data));
+
+        tabLayout.addOnTabSelectedListener(new VerticalTabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabView tab, int position) {
+                rvNavigation.stopScroll();
+                rvNavigation.smoothScrollToPosition(position);
+            }
+
+            @Override
+            public void onTabReselected(TabView tab, int position) {
+
+            }
+        });
+
+        rvNavigation.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                int position = manager.findFirstVisibleItemPosition();
+                tabLayout.setTabSelected(position);
             }
         });
     }

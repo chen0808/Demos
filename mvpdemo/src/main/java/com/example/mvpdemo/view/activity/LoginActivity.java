@@ -1,7 +1,11 @@
 package com.example.mvpdemo.view.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
+import android.view.ViewAnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.mvpdemo.R;
 import com.example.mvpdemo.bean.BaseBean;
@@ -28,6 +32,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     TextInputEditText etPassword;
     @BindView(R.id.btn_login)
     Button btnLogin;
+    @BindView(R.id.iv_bg)
+    ImageView ivBg;
     private LoginPresenter mPresenter;
 
     @Override
@@ -39,6 +45,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     protected void initView() {
         mPresenter = new LoginPresenter();
         mPresenter.attachView(this);
+
     }
 
     @Override
@@ -70,7 +77,21 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     public void onSuccess(BaseBean<UserBean> userBean) {
         SPUtils.saveUsername(userBean.getData().getUsername());
         SPUtils.savePassword(userBean.getData().getPassword());
-        startActivity(new Intent(this, MainActivity.class));
+
+        final int width = ivBg.getMeasuredWidth();
+        final int height = ivBg.getMeasuredHeight();
+        final float radius = (float) Math.sqrt(width * width + height * height);
+        Animator animator = ViewAnimationUtils.createCircularReveal(ivBg, width / 2, height / 2, radius, 0);
+        animator.setDuration(3000);
+        animator.start();
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            }
+        });
+
     }
 
     @Override
